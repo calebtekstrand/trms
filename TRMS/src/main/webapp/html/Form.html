@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Please fill out the form for Reimbursement</title>
+</head>
+<body>
+
+ <div class="container">
+  <form method="post" action="Form.do" >
+
+    <label for="Date">Date</label>
+    <input type="text" id="Date" name="Date" placeholder="Enter current date:">
+
+    <label for="Time">Time</label>
+    <input type="time" id="Time" name="usr_time" placeholder="Enter the current time:">
+    
+    <label for="Location">Location</label>
+    <input type="text" id="Location" name="Location" placeholder="Enter current Address:">
+    
+    <label for="Event">Event</label>
+    <select id="Event" name="Event">
+      <option value="University Courses">University Courses</option>
+      <option value="Seminars">Seminars</option>
+      <option value="Certification Preparation Classes">Certification Preparation Classes</option>
+      <option value="Certifications">Certifications</option>
+      <option value="Technical Training">Technical Training</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+
+  </form>
+</div> 
+
+<!-- <form method="post" action="Form.do" enctype="multipart/form-data"> -->
+ 
+<!--         File Name: &nbsp;&nbsp;&nbsp;<INPUT type="text" name="filename"><br/> -->
+<!-- 	    Upload File: &nbsp;<INPUT type="file" name="content"><br/>  -->
+ 
+<!--         <input type="submit" value="submit" /> -->
+<!-- </form> -->
+
+
+
+<script src="../js/Home.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" 
+integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" 
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" 
+integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" 
+crossorigin="anonymous"></script>
+</body>
+</html>
