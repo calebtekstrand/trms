@@ -14,7 +14,9 @@ public class RequestHelper {
 			return LoginController.Login(request);
 		case "/TRMS/html/Home.do":
 			System.out.println("hi");
-			return HomeController.Home(request);
+			return HomeController.Home(request, response);
+		case "/TRMS/html/Form.do":
+			return FormController.Form(request);
 		default:
 			return "/html/Login.html";
 		}
