@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.revature.model.Login;
-
+import com.revature.model.User;
 import com.revature.util.ConnFactory;
 
-public class LoginDAOImpl implements LoginDAO{
+public class UserDAOImpl implements UserDAO{
 	static{
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -18,24 +18,24 @@ public class LoginDAOImpl implements LoginDAO{
         }
     }
 	public static ConnFactory cf = ConnFactory.getInstance();
-
-	public Login selectLoginByUsername(String username) {
-		Login login = new Login();
+	@Override
+	public User selectUserById(int userId) {
+		User user = new User();
 		Connection conn = cf.getConnection();
 		PreparedStatement ps;
 		try {
-			ps = conn.prepareStatement("SELECT * FROM login_db WHERE username = ?");
-			ps.setString(1, username);
+			ps = conn.prepareStatement("SELECT * FROM user_db WHERE user_id = ?");
+			ps.setInt(1, userId);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				login = new Login(rs.getInt("user_id"), rs.getString("username"), rs.getString("password"));
+				user = new User(rs.getInt("user_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getInt("ds_id"), rs.getInt("dep_id"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return login;
+		return user;
 	}
 
 }
