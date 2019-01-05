@@ -28,7 +28,10 @@ INSERT INTO login_db VALUES(9,'mcoalfoot','p4ssw0rd');
 INSERT INTO login_db VALUES(10,'sbloom','p4ssw0rd');
 INSERT INTO login_db VALUES(11,'zgoose','p4ssw0rd');
 COMMIT;
-
+INSERT INTO grading_format_db VALUES(1, 'A-F');
+INSERT INTO grading_format_db VALUES(2, '100-0');
+INSERT INTO grading_format_db VALUES(3, 'Pass/Fail');
+COMMIT;
 INSERT INTO dep_head_db VALUES(9,1);
 INSERT INTO dep_head_db VALUES(8,2);
 INSERT INTO dep_head_db VALUES(2,3);

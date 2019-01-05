@@ -8,6 +8,11 @@ DROP TABLE dep_head_db;
 DROP TABLE dep_benco_db;
 DROP TABLE user_db;
 DROP TABLE department_db;
+DROP SEQUENCE ticket_seq;
+CREATE SEQUENCE ticket_seq
+START WITH 1
+INCREMENT BY 1
+ORDER;
 CREATE TABLE department_db(
     dep_id INTEGER,
     dep_name VARCHAR2(30),
@@ -47,11 +52,12 @@ CREATE TABLE grading_format_db(
     PRIMARY KEY(gf_id)
 );
 CREATE TABLE ticket_db(
-    ticket_id INTEGER,
-    event_date DATE NOT NULL,
-    event_time TIMESTAMP NOT NULL,
+    ticket_id INTEGER DEFAULT ticket_seq.nextval,
+    event_date VARCHAR2(50) NOT NULL,
+    event_time VARCHAR2(50) NOT NULL,
     event_loc VARCHAR2(100) NOT NULL,
-    event_desc VARCHAR2(30) NOT NULL,
+    event_desc VARCHAR2(500) NOT NULL,
+    event VARCHAR2(50) NOT NULL,
     event_cost NUMBER NOT NULL,
     gf_id INTEGER NOT NULL,
     gf_passing VARCHAR2(15) NOT NULL,
@@ -81,3 +87,7 @@ CREATE TABLE communication_db(
     FOREIGN KEY(ticket_id) REFERENCES ticket_db(ticket_id),
     FOREIGN KEY(sent_by) REFERENCES user_db(user_id)
 );
+CREATE SEQUENCE ticket_seq
+START WITH 1
+INCREMENT BY 1
+ORDER;
