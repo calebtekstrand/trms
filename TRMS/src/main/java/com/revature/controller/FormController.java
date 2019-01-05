@@ -12,7 +12,7 @@ public class FormController {
 		User user = (User)request.getSession().getAttribute("User");
 		Ticket ticket = new Ticket(1,request.getParameter("date"), request.getParameter("time"), request.getParameter("location"),
 				request.getParameter("description"), request.getParameter("event"), Integer.parseInt(request.getParameter("cost")), 
-				Integer.parseInt(request.getParameter("gf")), "default", request.getParameter("just"), 
+				Integer.parseInt(request.getParameter("gf")), request.getParameter("pass-grade"), request.getParameter("just"), 
 				user.getUserId(), "status", "stage");
 		System.out.println(ticket.getDate());
 		TicketDAOImpl tdi = new TicketDAOImpl();

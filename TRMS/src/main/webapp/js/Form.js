@@ -12,7 +12,7 @@ function dynamicdropdown(listindex)
         switch (listindex)
         {
         case "1" :
-            select.options[0]=new Option("--Select Passing Grade--","");
+            select.options[0]=new Option("Default","Default");
             select.options[1]=new Option("A","A");
             select.options[2]=new Option("B","B");
             select.options[3]=new Option("C","C");
@@ -21,11 +21,11 @@ function dynamicdropdown(listindex)
             
             break;
         case "2" :
-        	select.options[0]=new Option("--Select Passing Grade--","");
-        	select.options[1]=new Option("90","90");
-        	select.options[2]=new Option("80","80");
-        	select.options[3]=new Option("70","70");
-        	select.options[4]=new Option("60","60");
+        	select.options[0]=new Option("Default","Default");
+        	select.options[1]=new Option("90%","90%");
+        	select.options[2]=new Option("80%","80%");
+        	select.options[3]=new Option("70%","70%");
+        	select.options[4]=new Option("60%","60%");
             break;
         
     	case "3" :

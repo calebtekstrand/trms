@@ -30,6 +30,8 @@ public class UserDAOImpl implements UserDAO{
 			while(rs.next()) {
 				user = new User(rs.getInt("user_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getInt("ds_id"), rs.getInt("dep_id"));
 			}
+			TicketDAOImpl tdi = new TicketDAOImpl();
+			user.setTickets(tdi.selectTicketsByUserId(userId));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
