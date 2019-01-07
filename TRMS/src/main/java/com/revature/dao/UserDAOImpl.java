@@ -32,6 +32,7 @@ public class UserDAOImpl implements UserDAO{
 			}
 			TicketDAOImpl tdi = new TicketDAOImpl();
 			user.setTickets(tdi.selectTicketsByUserId(userId));
+			user.setTicketsToApprove(tdi.selectTicketsForApprovalByUserId(userId));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

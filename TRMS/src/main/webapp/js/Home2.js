@@ -43,4 +43,25 @@ function setValues(user) {
 		document.getElementById(current["ticketId"]).innerHTML = "Ticket Actions";
 		document.getElementById("tickets").innerHTML += "<br>";
 	}
+	for (i in user.ticketsToApprove) {
+		let current = user.ticketsToApprove[i];
+		for (x in current) {
+			document.getElementById("ticketsToApprove").innerHTML += x + ": " + current[x] + ", ";
+		}
+		document.getElementById("ticketsToApprove").innerHTML += "<br>";
+		let b = document.createElement("A");
+		let c = document.createAttribute("class");
+		c.value = "btn btn-primary btn-lg";
+		b.setAttributeNode(c);
+		c= document.createAttribute("id");
+		c.value = current["ticketId"];
+		b.setAttributeNode(c);
+		c = document.createAttribute("href");
+		c.value = "http://localhost:8080/TRMS/html/Ticket.html";
+		b.setAttributeNode(c);
+		document.getElementById("ticketsToApprove").append(b);
+		document.getElementById(current["ticketId"]).innerHTML = "Ticket Actions";
+		document.getElementById("ticketsToApprove").innerHTML += "<br>";
+	}
 }
+

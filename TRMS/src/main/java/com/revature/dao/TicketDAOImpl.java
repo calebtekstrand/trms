@@ -71,6 +71,31 @@ public class TicketDAOImpl implements TicketDAO {
 		
 		return tickets;
 	}
+
+	@Override
+	public ArrayList<Ticket> selectTicketsForApprovalByUserId(int userId) {
+		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+		Connection conn = cf.getConnection();
+		PreparedStatement ps;
+		
+			try {
+				ps = conn.prepareStatement("SELECT * FROM ticket_db WHERE user_id IN "
+						+ "(SELECT user_id FROM user_db WHERE ds_id = ?)");
+				ps.setInt(1, userId);
+				ResultSet rs = ps.executeQuery();
+				while(rs.next()) {
+					Ticket ticket = new Ticket(rs.getInt("ticket_id"), rs.getString("event_date"), rs.getString("event_time"), rs.getString("event_loc"),
+							rs.getString("event_desc"), rs.getString("event"), rs.getInt("event_cost"), rs.getInt("gf_id"), rs.getString("gf_passing"), 
+							rs.getString("justification"), rs.getInt("user_id"), rs.getString("status"), rs.getString("stage"));
+					tickets.add(ticket);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		return tickets;
+	}
 	
 
 }
