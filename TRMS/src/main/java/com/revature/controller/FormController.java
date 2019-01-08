@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.revature.dao.TicketDAOImpl;
@@ -17,6 +19,8 @@ public class FormController {
 		System.out.println(ticket.getDate());
 		TicketDAOImpl tdi = new TicketDAOImpl();
 		tdi.insertTicket(ticket);
+		user.setTickets(tdi.selectTicketsByUserId(user.getUserId()));
+		request.getSession().setAttribute("User", user);
 		return "/html/Home.html";
 	}
 

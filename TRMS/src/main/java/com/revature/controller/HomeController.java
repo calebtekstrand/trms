@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.TicketDAOImpl;
 import com.revature.model.User;
 
 public class HomeController {
@@ -22,7 +23,19 @@ public class HomeController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return "/html/Home.html";
+	}
+
+	public static String Approve(HttpServletRequest request) {
+		System.out.println("in Approve");
+//		System.out.println(request.getParameterValues("id"));           
+//		System.out.println(request.getParameterValues("stage"));           
+		TicketDAOImpl tdi = new TicketDAOImpl();
+		tdi.approveTicket(Integer.parseInt(request.getParameter("id")), request.getParameter("stage"));
+		User user = (User)request.getSession().getAttribute("User");
+		user.setTickets(tdi.selectTicketsByUserId(user.getUserId()));
+		request.getSession().setAttribute("User", user);
+		return "/html/Home.html";
 	}
 
 }

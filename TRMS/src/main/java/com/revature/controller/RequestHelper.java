@@ -13,10 +13,12 @@ public class RequestHelper {
 		case "/TRMS/html/Login.do":
 			return LoginController.Login(request);
 		case "/TRMS/html/Home.do":
-			System.out.println("hi");
+			//System.out.println("hi");
 			return HomeController.Home(request, response);
 		case "/TRMS/html/Form.do":
 			return FormController.Form(request);
+		case "/TRMS/html/Approve.do":
+			return HomeController.Approve(request);
 		default:
 			return "/html/Login.html";
 		}

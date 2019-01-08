@@ -24,6 +24,8 @@ public class MasterServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String targetURL = RequestHelper.process(request, response);
+		
 		request.getRequestDispatcher(targetURL).forward(request, response);
+		
 	}
 }
