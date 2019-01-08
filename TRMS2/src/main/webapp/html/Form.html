@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Please fill out the form for Reimbursement</title>
+</head>
+<body>
+
+	<div class="container">
+		<form method="POST" action="Form.do">
+
+			<label for="date">Date</label> <input type="date" id="date"
+				name="date" placeholder="Enter current date:"> <br>
+				<label for="time">Time</label> <input type="time" id="time" name="time"
+				placeholder="Enter the current time:"> <br>
+				 <label for="location">Location</label>
+			<input type="text" id="location" name="location"
+				placeholder="Enter current Address:"> <br>
+				<label for="event">Event</label>
+			<select id="event" name="event">
+				<option disabled selected value>--Select an Event--</option>
+				<option value="University Courses">University Courses</option>
+				<option value="Seminars">Seminars</option>
+				<option value="Certification Preparation Classes">Certification
+					Preparation Classes</option>
+				<option value="Certifications">Certifications</option>
+				<option value="Technical Training">Technical Training</option>
+				<option value="Other">Other</option>
+			</select> <br>
+			<label for="description">Description</label>
+			<textarea id="description" name="description" placeholder="Write something.."
+				style="height: 200px"></textarea> <br>
+			<label for="cost">Cost</label>
+			<input type="number" id="cost" name="cost" placeholder="$$$" min="0" max="1000"><br>
+			<label for="gf">Grading Format</label>
+			<select id="gf" name="gf" onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
+				<option disabled selected value>--Select an Format--</option>
+				<option value="1">A-F</option>
+				<option value="2">100-0</option>
+				<option value="3">Pass/Fail</option>
+			</select> <br>
+			<label for="pass-grade">Passing Grade</label>
+			<!-- input type="text" id="pass-grade" name="pass-grade" placeholder="Enter passing grade"> <br> -->
+			<script type="text/javascript" language="JavaScript">
+        		document.write('<select name="pass-grade" id="pass-grade"><option value="Default">Default</option></select>')
+        	</script> <br>
+			<label for="just">Justification</label>
+			<textarea id="just" name="just" placeholder="Write justification..." style="height: 200px;"></textarea> <br>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<!-- <form method="post" action="Form.do" enctype="multipart/form-data"> -->
+
+	<!--         File Name: &nbsp;&nbsp;&nbsp;<INPUT type="text" name="filename"><br/> -->
+	<!-- 	    Upload File: &nbsp;<INPUT type="file" name="content"><br/>  -->
+
+	<!--         <input type="submit" value="submit" /> -->
+	<!-- </form> -->
+
+
+
+	<script src="../js/Form.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+		crossorigin="anonymous"></script>
+</body>
+</html>

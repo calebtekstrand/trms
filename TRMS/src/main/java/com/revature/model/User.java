@@ -3,6 +3,7 @@ package com.revature.model;
 import java.util.ArrayList;
 
 public class User {
+	private String base64;
 	private int userId;
 	private String firstName;
 	private String lastName;
@@ -10,6 +11,19 @@ public class User {
 	private int depId;
 	private ArrayList<Ticket> tickets;
 	private ArrayList<Ticket> ticketsToApprove;
+	private ArrayList<Attachment> pictures;
+	public User(int userId, String firstName, String lastName, int dsId, int depId, ArrayList<Ticket> tickets,
+			ArrayList<Ticket> ticketsToApprove, ArrayList<Attachment> images) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dsId = dsId;
+		this.depId = depId;
+		this.tickets = tickets;
+		this.ticketsToApprove = ticketsToApprove;
+		this.pictures = images;
+	}
 	public User(int userId, String firstName, String lastName, int dsId, int depId, ArrayList<Ticket> tickets,
 			ArrayList<Ticket> ticketsToApprove) {
 		super();
@@ -78,6 +92,14 @@ public class User {
 		this.lastName = lastName;
 		this.dsId = dsId;
 		this.depId = depId;
+	}
+	
+	public void setBase64(String code) {
+		this.base64 = code;
+	}
+	
+	public String getBase64() {
+		return this.base64;
 	}
 	
 }

@@ -11,6 +11,10 @@ import java.util.Properties;
 
 public class ConnFactory {
 	private static ConnFactory cf = new ConnFactory();
+	private final static String user = "TRMS"; // System.getenv("jdbc_user")
+	private final static String password = "p4ssw0rd";
+	private final static String url = "jdbc:oracle:thin:@octocatdb.ckn7zuvrx3td.us-east-2.rds.amazonaws.com:1521:ORCL";
+
 	private ConnFactory() {
 		super();
 	}
@@ -28,7 +32,8 @@ public class ConnFactory {
 		try {
 			//prop.load(new FileReader("database.properties"));
 			//Class.forName(prop.getProperty("oracle.jdbc.driver.OracleDriver"));
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@octocatdb.c0ctdglcl6gk.us-east-2.rds.amazonaws.com:1521:ORCL", "trms_db", "p4ssw0rd");
+			conn = DriverManager.getConnection(url, user, password);
+			//conn = DriverManager.getConnection("jdbc:oracle:thin:@octocatdb.c0ctdglcl6gk.us-east-2.rds.amazonaws.com:1521:ORCL", "trms_db", "p4ssw0rd");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

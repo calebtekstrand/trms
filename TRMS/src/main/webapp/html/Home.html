@@ -3,22 +3,96 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Welcome Home</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
+crossorigin="anonymous">
 <link rel=stylesheet type="text/css" href="../css/Style.css">
 </head>
 <body>
-	
-	<h2>Welcome Home, yo!</h2>
-	<div class="form-control">
-		<h4>Here is your login info:</h4>
-		<div id="userId"></div>
-		<div id="firstName"></div>
-		<div id="lastName"></div>
-		<div id="dsId"></div>
-		<div id="depId"></div>
-		<div id="tickets"></div>
-		<a href="http://localhost:8080/TRMS/html/Form.html" class = "btn btn-primary btn-lg" id = "Form-link">Form</a>
+	<h2 id="myHeader">Hello</h2>
+	<div class="form-control ">
+		<h4>
+			<a href="http://localhost:9091/TRMS/html/Form.html" id = "Form-link">Click here to fill out a reimbursement form</a>
+			<a href="http://localhost:9091/TRMS/html/Upload.html" id = "Form-link">Click here to upload a supporting image</a>
+		</h4>
+		<div class="container">
+	<div class="row cg">
+    	<div class="col-12 col-offset-2">
+    	    <div class="panel panel-default ticket-list">
+              <div class="panel-heading">
+                <h3 class="panel-title text-center">Ticket History</h3>
+              </div>
+              <div class="panel-body ">
+                  <table class="table">
+                    <thead class='table-head'>
+                      <tr class='table-head'>
+                        <th>TICKET ID</th>
+                        <th>EVENT</th>
+                        <th>EVENT COST</th>
+                        <th>DESCRIPTION</th>
+                        <th>GRADE</th>
+                        <th>DATE</th>
+                        <th>TIME</th>
+                        <th>LOCATION</th>
+                        <th>JUSTIFICATION</th>
+                        <th>STATUS</th>
+                        <th>STAGE</th>
+                        <th>IMAGE GRADE</th>
+                        <th>ACTION</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Class</td>
+                        <td>2000</td>
+                        <td>csc500 robotics</td>
+                        <td>C</td>
+                        <td>9/9/2016</td>
+                        <td>1:00am</td>
+                        <td>CUNY CSI</td>
+                        <td>Needed to automate my own job with robot</td>
+                        <td>Pending</td>
+                        <td>Supervisor approved</td>
+                        <th><a id = "pic" href= "">Preview in browser</a></th>
+                        <td>
+                        	<button class = "style" type="button">Approve</button>
+                        	<button class = "style" type="button">Deny</button>
+                        	<button class = "style" type="button">Cancel</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Certification</td>
+                        <td>2000</td>
+                        <td>Salesforce</td>
+                        <td>Pass</td>
+                        <td>9/9/2016</td>
+                        <td>3:00am</td>
+                        <td>FDM NYC</td>
+                        <td>Needed certification for job transfer</td>
+                        <td>Pending</td>
+                        <td>Department head approved</td>
+                        <th>IMAGE GRADE</th>
+                        <td>
+                        	<button class = "style" type="button">Approve</button>
+                        	<button class = "style" type="button">Deny</button>
+                        	<button class = "style" type="button">Cancel</button>
+                        </td>
+                      </tr>
+<!--                       <tr> -->
+<!--                       	<td>id="tickets"></td> -->
+<!--                       </tr> -->
+                    </tbody>
+                  </table>    	
+              </div>
+            </div>
+    	</div>
 	</div>
+</div>
+	</div>
+	
+
 	
 <script src="../js/Home2.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
