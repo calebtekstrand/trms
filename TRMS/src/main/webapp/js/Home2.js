@@ -21,16 +21,46 @@ function getLoginInfo() {
 	
 }
 function setValues(user) {
-	document.getElementById("userId").innerHTML = "User ID: " + user.userId;
-	document.getElementById("firstName").innerHTML = "First Name: " + user.firstName;
-	document.getElementById("lastName").innerHTML = "Last Name: " + user.lastName;
-	document.getElementById("dsId").innerHTML = "DS Id: " + user.dsId;
-	document.getElementById("depId").innerHTML = "Dep Id: " + user.depId;
+	document.getElementById("myHeader").innerHTML = "Welcome " + user.firstName;
+	document.getElementById("myHeader").innerHTML += " " + user.lastName;
 	for (i in user.tickets) {
 		let current = user.tickets[i];
-		for (x in current) {
-			document.getElementById("tickets").innerHTML += x + ": " + current[x] + ", ";
+		let tickets = document.getElementById("tickets");
+		let row = document.createElement("TR");
+		for (j in current) {
+			if (j != "userId") {
+				let td = document.createElement("TD");
+				td.innerHTML = current[j];
+				row.append(td);
+			}
 		}
+		let td = document.createElement("TD");
+		let a = document.createElement("A");
+		let q = document.createAttribute("id");
+		let h = document.createAttribute("href");
+		q.value = "pic";
+		h.value = "";
+		a.innerHTML = "Preview In Browser";
+		a.setAttributeNode(q);
+		a.setAttributeNode(h);
+		td.append(a);
+		row.append(td);
+		td = document.createElement("TD");
+		let button = document.createElement("BUTTON");
+		let c = document.createAttribute("class");
+		c.value = "style";
+		button.setAttributeNode(c);
+		let n = document.createAttribute("id");
+		n.value = current["ticketId"] + " cancel";
+		button.setAttributeNode(n);
+		let func = document.createAttribute("onClick");
+		func.value = "cancel(" + current["ticketId"]+ ")";
+		button.setAttributeNode(func);
+		button.innerHTML = "Cancel";
+		td.append(button);
+		row.append(td);
+		tickets.append(row);
+		/*
 		document.getElementById("tickets").innerHTML += "<br>";
 		let b = document.createElement("BUTTON");
 		let c = document.createAttribute("class");
@@ -42,8 +72,60 @@ function setValues(user) {
 		document.getElementById("tickets").append(b);
 		document.getElementById(current["ticketId"]).innerHTML = "Ticket Actions";
 		document.getElementById("tickets").innerHTML += "<br>";
+		*/
 	}
 	for (i in user.ticketsToApprove) {
+		let current = user.ticketsToApprove[i];
+		let tickets = document.getElementById("ticketsToApprove");
+		let row = document.createElement("TR");
+		for (j in current) {
+			if (j != "userId") {
+				let td = document.createElement("TD");
+				td.innerHTML = current[j];
+				row.append(td);
+			}
+		}
+		let td = document.createElement("TD");
+		let a = document.createElement("A");
+		let q = document.createAttribute("id");
+		let h = document.createAttribute("href");
+		q.value = "pic";
+		h.value = "";
+		a.innerHTML = "Preview In Browser";
+		a.setAttributeNode(q);
+		a.setAttributeNode(h);
+		td.setAttributeNode(a);
+		row.append(td);
+		td = document.createElement("TD");
+		let button = document.createElement("BUTTON");
+		let c = document.createAttribute("class");
+		c.value = "style";
+		button.setAttributeNode(c);
+		let n = document.createAttribute("id");
+		n.value = current["ticketId"] + " approve";
+		button.setAttributeNode(n);
+		let func = document.createAttribute("onClick");
+		func.value = "approve(" + current["ticketId"]+ ", '" + current["stage"] + "')";
+		button.setAttributeNode(func);
+		button.innerHTML = "Approve";
+		td.append(button);
+		
+		button = document.createElement("BUTTON");
+		c = document.createAttribute("class");
+		c.value = "style";
+		button.setAttributeNode(c);
+		n = document.createAttribute("id");
+		n.value = current["ticketId"] + " deny";
+		button.setAttributeNode(n);
+		func = document.createAttribute("onClick");
+		func.value = "deny(" + current["ticketId"]+")";
+		button.setAttributeNode(func);
+		button.innerHTML = "Deny";
+		td.append(button);
+		
+		row.append(td);
+		tickets.append(row);
+		/*
 		let current = user.ticketsToApprove[i];
 		for (x in current) {
 			document.getElementById("ticketsToApprove").innerHTML += x + ": " + current[x] + ", ";
@@ -62,7 +144,7 @@ function setValues(user) {
 		document.getElementById("ticketsToApprove").append(b);
 		document.getElementById(current["ticketId"] + " approve").innerHTML = "Approve";
 		document.getElementById("ticketsToApprove").innerHTML += "<br>";
-		
+		*/
 	}
 }
 function approve(id, stage) {
@@ -71,7 +153,7 @@ function approve(id, stage) {
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
-			let elem = document.getElementById(id+ " approve");
+			let elem = document.getElementById(id+ " approve").parentNode.parentNode;
 			elem.parentNode.removeChild(elem);
 		}
 	}
@@ -80,16 +162,29 @@ function approve(id, stage) {
 	xhr.send(data);
 	
 }
-function deny(id, stage) {
-	let data = "id=" + id + "&stage=" + stage;
+function deny(id) {
+	let data = "id=" + id;
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
-			let elem = document.getElementById(id+ " deny");
+			let elem = document.getElementById(id+ " deny").parentNode.parentNode;
 			elem.parentNode.removeChild(elem);
 		}
 	}
 	xhr.open("POST", 'http://localhost:8080/TRMS/html/Deny.do', true);
+	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhr.send(data);
+}
+function cancel(id){
+	let data = "id=" + id;
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			let elem = document.getElementById(id+ " cancel").parentNode.parentNode;
+			elem.parentNode.removeChild(elem);
+		}
+	}
+	xhr.open("POST", 'http://localhost:8080/TRMS/html/Cancel.do', true);
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.send(data);
 }

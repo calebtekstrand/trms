@@ -19,6 +19,10 @@ public class RequestHelper {
 			return FormController.Form(request);
 		case "/TRMS/html/Approve.do":
 			return HomeController.Approve(request);
+		case "/TRMS/html/Deny.do":
+			return HomeController.Deny(request);
+		case "/TRMS/html/Cancel.do":
+			return HomeController.Cancel(request);
 		default:
 			return "/html/Login.html";
 		}

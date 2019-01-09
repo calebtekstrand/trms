@@ -38,4 +38,28 @@ public class HomeController {
 		return "/html/Home.html";
 	}
 
+	public static String Deny(HttpServletRequest request) {
+		System.out.println("in Deny");
+//		System.out.println(request.getParameterValues("id"));           
+//		System.out.println(request.getParameterValues("stage"));           
+		TicketDAOImpl tdi = new TicketDAOImpl();
+		tdi.denyTicket(Integer.parseInt(request.getParameter("id")));
+		User user = (User)request.getSession().getAttribute("User");
+		user.setTickets(tdi.selectTicketsByUserId(user.getUserId()));
+		request.getSession().setAttribute("User", user);
+		return "/html/Home.html";
+	}
+
+	public static String Cancel(HttpServletRequest request) {
+		System.out.println("in Cancel");
+//		System.out.println(request.getParameterValues("id"));           
+//		System.out.println(request.getParameterValues("stage"));           
+		TicketDAOImpl tdi = new TicketDAOImpl();
+		tdi.cancelTicket(Integer.parseInt(request.getParameter("id")));
+		User user = (User)request.getSession().getAttribute("User");
+		user.setTickets(tdi.selectTicketsByUserId(user.getUserId()));
+		request.getSession().setAttribute("User", user);
+		return "/html/Home.html";
+	}
+
 }

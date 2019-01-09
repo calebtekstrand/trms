@@ -169,5 +169,32 @@ public class TicketDAOImpl implements TicketDAO {
 			}
 		} 
 	}
+	@Override
+	public void denyTicket(int ticketId) {
+		Connection conn = cf.getConnection();
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement("UPDATE ticket_db SET status = 'denied'" + "WHERE ticket_id = ?");
+			ps.setInt(1, ticketId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void cancelTicket(int ticketId) {
+		Connection conn = cf.getConnection();
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement("DELETE FROM ticket_db WHERE ticket_id = ?");
+			ps.setInt(1, ticketId);
+			ps.executeQuery();
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	 }
+	}
 
 }

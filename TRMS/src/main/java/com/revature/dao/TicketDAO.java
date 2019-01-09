@@ -9,4 +9,6 @@ public interface TicketDAO {
 	public ArrayList<Ticket> selectTicketsByUserId(int userId);
 	public ArrayList<Ticket> selectTicketsForApprovalByUserId(int userId);
 	public void approveTicket(int ticketId, String stage);
+	public void denyTicket(int ticketId);
+	public void cancelTicket(int ticketId);
 }
