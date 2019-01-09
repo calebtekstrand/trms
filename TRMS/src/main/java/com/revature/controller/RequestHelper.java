@@ -23,6 +23,8 @@ public class RequestHelper {
 			return HomeController.Deny(request);
 		case "/TRMS/html/Cancel.do":
 			return HomeController.Cancel(request);
+		case "/TRMS/html/Upload.do":
+			return UploadController.downloadFile(request);
 		default:
 			return "/html/Login.html";
 		}

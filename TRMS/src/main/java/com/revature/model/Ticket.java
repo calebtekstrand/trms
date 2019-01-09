@@ -1,6 +1,6 @@
 package com.revature.model;
 
-import java.sql.Date;
+import java.util.ArrayList;
 
 
 public class Ticket {
@@ -17,7 +17,36 @@ public class Ticket {
 	private int userId;
 	private String status;
 	private String stage;
+	private ArrayList<Attachment> pictures;
 	
+	public Ticket(int ticketId, String date, String time, String location, String description, String event, int cost,
+			int gfId, String gfPassing, String justification, int userId, String status, String stage,
+			ArrayList<Attachment> pictures) {
+		super();
+		this.ticketId = ticketId;
+		this.date = date;
+		this.time = time;
+		this.location = location;
+		this.description = description;
+		this.event = event;
+		this.cost = cost;
+		this.gfId = gfId;
+		this.gfPassing = gfPassing;
+		this.justification = justification;
+		this.userId = userId;
+		this.status = status;
+		this.stage = stage;
+		this.pictures = pictures;
+	}
+	
+	public ArrayList<Attachment> getPictures() {
+		return pictures;
+	}
+
+	public void setPictures(ArrayList<Attachment> pictures) {
+		this.pictures = pictures;
+	}
+
 	public int getTicketId() {
 		return ticketId;
 	}

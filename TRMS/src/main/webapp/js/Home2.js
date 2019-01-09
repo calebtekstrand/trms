@@ -28,7 +28,7 @@ function setValues(user) {
 		let tickets = document.getElementById("tickets");
 		let row = document.createElement("TR");
 		for (j in current) {
-			if (j != "userId") {
+			if (j != "userId" && j != "pictures") {
 				let td = document.createElement("TD");
 				td.innerHTML = current[j];
 				row.append(td);
@@ -39,10 +39,14 @@ function setValues(user) {
 		let q = document.createAttribute("id");
 		let h = document.createAttribute("href");
 		q.value = "pic";
-		h.value = "";
-		a.innerHTML = "Preview In Browser";
+		if(current.pictures[0]){
+			h.value = current.pictures[0].aBase64;
+			a.setAttributeNode(h);
+			a.innerHTML = "Preview In Browser";
+		} else {
+			a.innerHTML = "No Preview Available";
+		}
 		a.setAttributeNode(q);
-		a.setAttributeNode(h);
 		td.append(a);
 		row.append(td);
 		td = document.createElement("TD");

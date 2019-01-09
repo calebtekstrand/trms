@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.revature.model.Attachment;
 import com.revature.model.Ticket;
-import com.revature.model.User;
 import com.revature.util.ConnFactory;
 
 public class TicketDAOImpl implements TicketDAO {
@@ -51,6 +51,7 @@ public class TicketDAOImpl implements TicketDAO {
 	@Override
 	public ArrayList<Ticket> selectTicketsByUserId(int userId) {
 		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+		DownloadDAOImpl ddi = new DownloadDAOImpl();
 		Connection conn = cf.getConnection();
 		PreparedStatement ps;
 
@@ -59,11 +60,13 @@ public class TicketDAOImpl implements TicketDAO {
 			ps.setInt(1, userId);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+				ArrayList<Attachment> att = new ArrayList<Attachment>();
+				att.add(ddi.getBlob(rs.getInt("ticket_id")));
 				Ticket ticket = new Ticket(rs.getInt("ticket_id"), rs.getString("event_date"),
 						rs.getString("event_time"), rs.getString("event_loc"), rs.getString("event_desc"),
 						rs.getString("event"), rs.getInt("event_cost"), rs.getInt("gf_id"), rs.getString("gf_passing"),
 						rs.getString("justification"), rs.getInt("user_id"), rs.getString("status"),
-						rs.getString("stage"));
+						rs.getString("stage"), att);
 				tickets.add(ticket);
 			}
 		} catch (SQLException e) {

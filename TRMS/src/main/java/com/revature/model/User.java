@@ -21,9 +21,12 @@ public class User {
 		this.tickets = tickets;
 		this.ticketsToApprove = ticketsToApprove;
 	}
+	
+
 	public ArrayList<Ticket> getTicketsToApprove() {
 		return ticketsToApprove;
 	}
+
 	public void setTicketsToApprove(ArrayList<Ticket> ticketsToApprove) {
 		this.ticketsToApprove = ticketsToApprove;
 	}
